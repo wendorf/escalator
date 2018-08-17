@@ -49,15 +49,17 @@ func (c *CloudProvider) RegisterNodeGroup(nodeGroup *NodeGroup) {
 
 type NodeGroup struct {
 	id         string
+	name       string
 	minSize    int64
 	maxSize    int64
 	actualSize int64
 	targetSize int64
 }
 
-func NewNodeGroup(id string, minSize int64, maxSize int64, targetSize int64) *NodeGroup {
+func NewNodeGroup(id string, name string, minSize int64, maxSize int64, targetSize int64) *NodeGroup {
 	return &NodeGroup{
 		id,
+		name,
 		minSize,
 		maxSize,
 		targetSize,
@@ -71,6 +73,10 @@ func (n *NodeGroup) String() string {
 
 func (n *NodeGroup) ID() string {
 	return n.id
+}
+
+func (n *NodeGroup) Name() string {
+	return n.name
 }
 
 func (n *NodeGroup) MinSize() int64 {

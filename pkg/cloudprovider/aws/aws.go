@@ -101,16 +101,18 @@ func (c *CloudProvider) Refresh() error {
 
 // NodeGroup implements a aws nodegroup
 type NodeGroup struct {
-	id  string
-	asg *autoscaling.Group
+	id   string
+	name string
+	asg  *autoscaling.Group
 
 	provider *CloudProvider
 }
 
 // NewNodeGroup creates a new nodegroup from the aws group backing
-func NewNodeGroup(id string, asg *autoscaling.Group, provider *CloudProvider) *NodeGroup {
+func NewNodeGroup(id string, name string, asg *autoscaling.Group, provider *CloudProvider) *NodeGroup {
 	return &NodeGroup{
 		id:       id,
+		name:     name,
 		asg:      asg,
 		provider: provider,
 	}
@@ -123,6 +125,11 @@ func (n *NodeGroup) String() string {
 // ID returns an unique identifier of the node group.
 func (n *NodeGroup) ID() string {
 	return n.id
+}
+
+// Name returns the name of the Escalator node group defining this node group.
+func (n *NodeGroup) Name() string {
+	return n.name
 }
 
 // MinSize returns minimum size of the node group.

@@ -22,14 +22,14 @@ func TestCloudProvider_NodeGroups(t *testing.T) {
 		{
 			"single node group",
 			map[string]*NodeGroup{
-				"1": NewNodeGroup("1", &autoscaling.Group{}, &CloudProvider{}),
+				"1": NewNodeGroup("1", "one", &autoscaling.Group{}, &CloudProvider{}),
 			},
 		},
 		{
 			"multiple node groups",
 			map[string]*NodeGroup{
-				"1": NewNodeGroup("1", &autoscaling.Group{}, &CloudProvider{}),
-				"2": NewNodeGroup("2", &autoscaling.Group{}, &CloudProvider{}),
+				"1": NewNodeGroup("1", "one", &autoscaling.Group{}, &CloudProvider{}),
+				"2": NewNodeGroup("2", "two", &autoscaling.Group{}, &CloudProvider{}),
 			},
 		},
 		{
@@ -58,7 +58,7 @@ func TestCloudProvider_GetNodeGroup(t *testing.T) {
 		{
 			"get a node group that exists",
 			map[string]*NodeGroup{
-				"1": NewNodeGroup("1", &autoscaling.Group{}, &CloudProvider{}),
+				"1": NewNodeGroup("1", "one", &autoscaling.Group{}, &CloudProvider{}),
 			},
 			"1",
 			true,

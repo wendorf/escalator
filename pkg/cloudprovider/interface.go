@@ -35,6 +35,9 @@ type NodeGroup interface {
 	// ID returns an unique identifier of the node group.
 	ID() string
 
+	// Name returns the name of the Escalator node group defining this node group.
+	Name() string
+
 	// MinSize returns minimum size of the node group.
 	MinSize() int64
 
